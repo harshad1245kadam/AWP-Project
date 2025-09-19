@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harshad Kadam- Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-abwesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+               <ul class="navbar-nav ms-auto">
+  <li class="nav-item ms-3"><a class="nav-link" href="#home">Home</a></li>
+  <li class="nav-item ms-3"><a class="nav-link" href="#about">About</a></li>
+  <li class="nav-item ms-3"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+  <li class="nav-item ms-3"><a class="nav-link" href="#contact">Contact</a></li>
+</ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero d-flex align-items-center">
+        <div class="container text-center text-white">
+            <h1 class="display-4 mb-3">Hi, I'm Harshad Kadam </h1>
+            <p class="lead mb-4">Full Stack Developer </p>
+            <a href="#portfolio" class="btn btn-primary btn-lg me-3">View My Work</a>
+            <a href="#contact" class="btn btn-outline-light btn-lg">Contact Me</a>
+        </div>
+    </section>
+
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center mb-5">
+                    <h2>About Me</h2>
+                    <p class="lead"></p>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+<img src="./myphto.png" class="profile-img" alt="Profile photo of Harshad Kadam">                </div>
+                <div class="col-lg-6">
+                    <h3>Full Stack Developer</h3>
+                    <p>I specialize in building fast, secure, and SEO-friendly websites.
+
+My designs are tailored to be mobile-first, ensuring seamless performance across all devices.
+
+I work with modern frameworks and libraries to deliver scalable and future-ready solutions.
+
+My goal is to turn ideas into interactive, user-friendly digital products.
+
+I pay close attention to details, balancing functionality with visual appeal.
+                    <div class="skills mb-3">
+                        <span class="badge bg-primary me-2">HTML/CSS</span>
+                        <span class="badge bg-primary me-2">JavaScript</span>
+                        <span class="badge bg-primary me-2">React</span>
+                        <span class="badge bg-primary me-2">Node.js</span>
+                        <span class="badge bg-primary me-2">Angular</span><br><br>  
+                        <a href="/resume/resumeindex.html" class="btn btn-warning" target="_blank">View Resume</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-5 bg-black">
+        <div class="container">
+            <div class="text-center mb-5 text-white ">
+                <h2>My Portfolio</h2>
+                <p class="lead">Some of my recent projects</p>
+            </div>
+            <div class="portfolio-scroll">
+                <div class="portfolio-card">
+                    <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="E-commerce Website" class="portfolio-img">
+                    <div class="card-body">
+                        <h5 class="card-title">E-commerce Website</h5>
+                        <p class="card-text">Modern online store built with React and Node.js</p>
+                        <a href="/Ecommerce/index.html" target="_blank" rel="noopener" class="btn btn-primary btn-sm">View Project</a>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Weather Forecast" class="portfolio-img">
+                    <div class="card-body">
+                        <h5 class="card-title">Weather Website</h5>
+                        <p class="card-text">Live weather updates and forecasts for any city</p>
+                        <a href="/Weather Forecast/index.html" target="_blank" rel="noopener" class="btn btn-primary btn-sm">View Project</a>
+                    </div>
+                </div>
+                <!-- Add more portfolio-card divs for more projects -->
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2>Contact-Form</h2>
+                
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <form id="contactForm">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Your Name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" class="form-control" placeholder="Your Email" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Subject" required>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row mt-5 text-center">
+                <div class="col-md-4">
+                    <i class="fas fa-envelope fa-2x mb-3 text-primary"></i>
+                    <h5>Email</h5>
+                    <p>harshadkadam@gmail.com</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-phone fa-2x mb-3 text-primary"></i>
+                    <h5>Phone</h5>
+                    <p>8360136855</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-map-marker-alt fa-2x mb-3 text-primary"></i>
+                    <h5>Location</h5>
+                    <p>Pune</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white py-4 text-center">
+        <div class="container">
+            <p>Harshad Kadam-Social</p>
+            <div class="social-links mt-3">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+                <a href="https://www.linkedin.com/in/kadamharshad/" class="text-white me-3" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/harshad1245kadam" class="text-white me-3" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" class="text-white me-3" title="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

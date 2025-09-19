@@ -1,0 +1,180 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f5f5f5;
+    color: #333;
+    font-size: 1.15rem;
+}
+
+/* Header Styles */
+header {
+    background-color: white;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 1rem;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 3px solid #333;
+}
+
+#profile-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+h1 {
+    color: #000;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+}
+
+/* Social Links */
+.social-links {
+    margin: 1rem 0;
+}
+
+.social-links a {
+    color: #333;
+    font-size: 1.5rem;
+    margin: 0 1rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #000;
+}
+
+/* Main Content */
+main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+section {
+    background-color: white;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+h2 {
+    color: #000;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #333;
+}
+
+/* Skills Section */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.skill {
+    background-color: #333;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+/* Education and Experience Sections */
+.education-item, .experience-item, .certification-item {
+    margin-bottom: 1.5rem;
+}
+
+.college-name {
+    font-family: 'Georgia', serif;
+    font-size: 1.18rem;
+    color: #010b1e;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.education-year {
+    font-family: 'Arial Black', Arial, sans-serif;
+    font-size: 1.08rem;
+    color: #000000c8;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+h3 {
+    color: #000;
+    margin-bottom: 0.5rem;
+}
+
+h4 {
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.date {
+    color: #666;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+ul {
+    list-style-position: inside;
+    margin-left: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    header {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .profile-image {
+        width: 120px;
+        height: 120px;
+    }
+
+    section {
+        padding: 1rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+section {
+    animation: fadeIn 0.5s ease-out forwards;
+}
