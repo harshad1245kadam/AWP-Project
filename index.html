@@ -7,6 +7,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-abwesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
+    <!-- React CDN -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -103,31 +107,9 @@ I pay close attention to details, balancing functionality with visual appeal.
         <div class="container">
             <div class="text-center mb-5">
                 <h2>Contact-Form</h2>
-                
+                <p class="lead">Enhanced with React.js - Real-time validation & interactive feedback</p>
             </div>
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <form id="contactForm">
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="Your Name" required>
-                            </div>
-                            <div class="col-md-6">
-                                <input type="email" class="form-control" placeholder="Your Email" required>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Subject" required>
-                        </div>
-                        <div class="mb-3">
-                            <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            <div id="react-contact-form"></div>
             <div class="row mt-5 text-center">
                 <div class="col-md-4">
                     <i class="fas fa-envelope fa-2x mb-3 text-primary"></i>
@@ -160,6 +142,181 @@ I pay close attention to details, balancing functionality with visual appeal.
             </div>
         </div>
     </footer>
+    
+    <!-- React Contact Form Component -->
+    <script type="text/babel">
+        const ContactForm = () => {
+            const [formData, setFormData] = React.useState({
+                name: '',
+                email: '',
+                subject: '',
+                message: ''
+            });
+            const [errors, setErrors] = React.useState({});
+            const [submitStatus, setSubmitStatus] = React.useState('');
+            const [isSubmitting, setIsSubmitting] = React.useState(false);
+
+            const validateEmail = (email) => {
+                const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return regex.test(email);
+            };
+
+            const validateField = (name, value) => {
+                const newErrors = { ...errors };
+                
+                switch (name) {
+                    case 'name':
+                        if (value.length < 2) {
+                            newErrors.name = 'Name must be at least 2 characters';
+                        } else {
+                            delete newErrors.name;
+                        }
+                        break;
+                    case 'email':
+                        if (!validateEmail(value)) {
+                            newErrors.email = 'Please enter a valid email address';
+                        } else {
+                            delete newErrors.email;
+                        }
+                        break;
+                    case 'subject':
+                        if (value.length < 3) {
+                            newErrors.subject = 'Subject must be at least 3 characters';
+                        } else {
+                            delete newErrors.subject;
+                        }
+                        break;
+                    case 'message':
+                        if (value.length < 10) {
+                            newErrors.message = 'Message must be at least 10 characters';
+                        } else if (value.length > 500) {
+                            newErrors.message = 'Message must be less than 500 characters';
+                        } else {
+                            delete newErrors.message;
+                        }
+                        break;
+                }
+                
+                setErrors(newErrors);
+            };
+
+            const handleInputChange = (e) => {
+                const { name, value } = e.target;
+                setFormData(prev => ({ ...prev, [name]: value }));
+                validateField(name, value);
+            };
+
+            const handleSubmit = async (e) => {
+                e.preventDefault();
+                setIsSubmitting(true);
+                
+                // Simulate form submission
+                setTimeout(() => {
+                    setSubmitStatus('success');
+                    setIsSubmitting(false);
+                    setFormData({ name: '', email: '', subject: '', message: '' });
+                    setTimeout(() => setSubmitStatus(''), 3000);
+                }, 1500);
+            };
+
+            const clearForm = () => {
+                setFormData({ name: '', email: '', subject: '', message: '' });
+                setErrors({});
+                setSubmitStatus('');
+            };
+
+            return React.createElement('div', { className: 'row' },
+                React.createElement('div', { className: 'col-lg-8 mx-auto' },
+                    React.createElement('form', { onSubmit: handleSubmit },
+                        React.createElement('div', { className: 'row mb-3' },
+                            React.createElement('div', { className: 'col-md-6' },
+                                React.createElement('div', { className: 'mb-2' },
+                                    React.createElement('input', {
+                                        type: 'text',
+                                        name: 'name',
+                                        className: `form-control ${errors.name ? 'is-invalid' : formData.name ? 'is-valid' : ''}`,
+                                        placeholder: 'Your Name',
+                                        value: formData.name,
+                                        onChange: handleInputChange,
+                                        required: true
+                                    }),
+                                    errors.name && React.createElement('div', { className: 'invalid-feedback' }, errors.name)
+                                )
+                            ),
+                            React.createElement('div', { className: 'col-md-6' },
+                                React.createElement('div', { className: 'mb-2' },
+                                    React.createElement('input', {
+                                        type: 'email',
+                                        name: 'email',
+                                        className: `form-control ${errors.email ? 'is-invalid' : formData.email && validateEmail(formData.email) ? 'is-valid' : ''}`,
+                                        placeholder: 'Your Email',
+                                        value: formData.email,
+                                        onChange: handleInputChange,
+                                        required: true
+                                    }),
+                                    errors.email && React.createElement('div', { className: 'invalid-feedback' }, errors.email)
+                                )
+                            )
+                        ),
+                        React.createElement('div', { className: 'mb-3' },
+                            React.createElement('input', {
+                                type: 'text',
+                                name: 'subject',
+                                className: `form-control ${errors.subject ? 'is-invalid' : formData.subject ? 'is-valid' : ''}`,
+                                placeholder: 'Subject',
+                                value: formData.subject,
+                                onChange: handleInputChange,
+                                required: true
+                            }),
+                            errors.subject && React.createElement('div', { className: 'invalid-feedback' }, errors.subject)
+                        ),
+                        React.createElement('div', { className: 'mb-3' },
+                            React.createElement('textarea', {
+                                name: 'message',
+                                className: `form-control ${errors.message ? 'is-invalid' : formData.message && formData.message.length >= 10 ? 'is-valid' : ''}`,
+                                rows: 5,
+                                placeholder: 'Your Message',
+                                value: formData.message,
+                                onChange: handleInputChange,
+                                required: true
+                            }),
+                            React.createElement('div', { className: 'd-flex justify-content-between' },
+                                errors.message && React.createElement('div', { className: 'invalid-feedback' }, errors.message),
+                                React.createElement('small', { 
+                                    className: `text-muted ${formData.message.length > 450 ? 'text-warning' : ''}` 
+                                }, `${formData.message.length}/500 characters`)
+                            )
+                        ),
+                        submitStatus === 'success' && React.createElement('div', { className: 'alert alert-success text-center mb-3' },
+                            React.createElement('i', { className: 'fas fa-check-circle me-2' }),
+                            'Thank you! Your message has been sent successfully.'
+                        ),
+                        React.createElement('div', { className: 'text-center' },
+                            React.createElement('button', {
+                                type: 'submit',
+                                className: 'btn btn-primary btn-lg me-3',
+                                disabled: isSubmitting || Object.keys(errors).length > 0
+                            }, isSubmitting ? 
+                                React.createElement('span', null,
+                                    React.createElement('i', { className: 'fas fa-spinner fa-spin me-2' }),
+                                    'Sending...'
+                                ) : 'Send Message'
+                            ),
+                            React.createElement('button', {
+                                type: 'button',
+                                className: 'btn btn-outline-secondary',
+                                onClick: clearForm
+                            }, 'Clear Form')
+                        )
+                    )
+                )
+            );
+        };
+
+        // Render the React component
+        ReactDOM.render(React.createElement(ContactForm), document.getElementById('react-contact-form'));
+    </script>
+    
     <script src="script.js"></script>
 </body>
 </html>
